@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareCore", "FareCore\FareCore.csproj", "{206B743D-D41F-4EE8-9702-A82121FF4859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareCore.Tests", "FareCore.Tests\FareCore.Tests.csproj", "{96423074-F9D6-4571-B117-5FF3CA760DE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{206B743D-D41F-4EE8-9702-A82121FF4859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206B743D-D41F-4EE8-9702-A82121FF4859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206B743D-D41F-4EE8-9702-A82121FF4859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206B743D-D41F-4EE8-9702-A82121FF4859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96423074-F9D6-4571-B117-5FF3CA760DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96423074-F9D6-4571-B117-5FF3CA760DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96423074-F9D6-4571-B117-5FF3CA760DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96423074-F9D6-4571-B117-5FF3CA760DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
