@@ -1,6 +1,7 @@
-﻿namespace RandomDataGeneratorCore.FareRegex;
-
-public interface IAutomatonProvider
+﻿namespace FareCore
 {
-    Automaton GetAutomaton(string name);
+    public interface IAutomatonProvider
+    {
+        Automaton GetAutomaton(string name);
+    }
 }
