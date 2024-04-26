@@ -2,23 +2,23 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace RandomDataGeneratorCore.FareRegex;
-
-public  class StringUnionOperations
+namespace FareCore
 {
-    private static readonly IComparer<char[]> lexicographicOrder = new LexicographicOrder();
-
-    private readonly State root = new State();
-
-    private StringBuilder previous;
-    private IDictionary<State, State> register = new Dictionary<State, State>();
-
-    public static IComparer<char[]> LexicographicOrderComparer
+    public  class StringUnionOperations
     {
-        get { return lexicographicOrder; }
-    }
+        private static readonly IComparer<char[]> lexicographicOrder = new LexicographicOrder();
 
-    public static FareRegex.State Build(IEnumerable<char[]> input)
+        private readonly State root = new State();
+
+        private StringBuilder previous;
+        private IDictionary<State, State> register = new Dictionary<State, State>();
+
+        public static IComparer<char[]> LexicographicOrderComparer
+        {
+            get { return lexicographicOrder; }
+        }
+
+        public static FareCore.State Build(IEnumerable<char[]> input)
     {
         var builder = new StringUnionOperations();
 
@@ -27,10 +27,10 @@ public  class StringUnionOperations
             builder.Add(chs);
         }
 
-        return Convert(builder.Complete(), new Dictionary<State, FareRegex.State>());
+        return Convert(builder.Complete(), new Dictionary<State, FareCore.State>());
     }
 
-    public void Add(char[] current)
+        public void Add(char[] current)
     {
         Debug.Assert(register != null, "Automaton already built.");
         Debug.Assert(current.Length > 0, "Input sequences must not be empty.");
@@ -59,7 +59,7 @@ public  class StringUnionOperations
         AddSuffix(state, current, pos);
     }
 
-    private static void AddSuffix(State state, char[] current, int fromIndex)
+        private static void AddSuffix(State state, char[] current, int fromIndex)
     {
         for (int i = fromIndex; i < current.Length; i++)
         {
@@ -69,15 +69,15 @@ public  class StringUnionOperations
         state.IsFinal = true;
     }
 
-    private static FareRegex.State Convert(State s, IDictionary<State, FareRegex.State> visited)
+        private static FareCore.State Convert(State s, IDictionary<State, FareCore.State> visited)
     {
-        FareRegex.State converted = visited[s];
+        FareCore.State converted = visited[s];
         if (converted != null)
         {
             return converted;
         }
 
-        converted = new FareRegex.State();
+        converted = new FareCore.State();
         converted.Accept = s.IsFinal;
 
         visited.Add(s, converted);
@@ -91,7 +91,7 @@ public  class StringUnionOperations
         return converted;
     }
 
-    private State Complete()
+        private State Complete()
     {
         if (register == null)
         {
@@ -107,7 +107,7 @@ public  class StringUnionOperations
         return root;
     }
 
-    private void ReplaceOrRegister(State state)
+        private void ReplaceOrRegister(State state)
     {
         State child = state.LastChild;
 
@@ -127,7 +127,7 @@ public  class StringUnionOperations
         }
     }
 
-    private bool SetPrevious(char[] current)
+        private bool SetPrevious(char[] current)
     {
         if (previous == null)
         {
@@ -140,9 +140,9 @@ public  class StringUnionOperations
         return true;
     }
 
-    private sealed class LexicographicOrder : IComparer<char[]>
-    {
-        public int Compare(char[] s1, char[] s2)
+        private sealed class LexicographicOrder : IComparer<char[]>
+        {
+            public int Compare(char[] s1, char[] s2)
         {
             int lens1 = s1.Length;
             int lens2 = s2.Length;
@@ -160,48 +160,48 @@ public  class StringUnionOperations
 
             return lens1 - lens2;
         }
-    }
-
-    private sealed class State
-    {
-        private static readonly  char[] noLabels = new char[0];
-        private static readonly State[] noStates = new State[0];
-        private bool isFinal;
-
-        private  char[] labels = noLabels;
-        private State[] states = noStates;
-
-        public char[] TransitionLabels
-        {
-            get { return labels; }
         }
 
-        public IEnumerable<State> States
+        private sealed class State
         {
-            get { return states; }
-        }
+            private static readonly  char[] noLabels = new char[0];
+            private static readonly State[] noStates = new State[0];
+            private bool isFinal;
 
-        public bool HasChildren
-        {
-            get { return labels.Length > 0; }
-        }
+            private  char[] labels = noLabels;
+            private State[] states = noStates;
 
-        public bool IsFinal
-        {
-            get { return isFinal; }
-            set { isFinal = value; }
-        }
+            public char[] TransitionLabels
+            {
+                get { return labels; }
+            }
 
-        public State LastChild
-        {
-            get
+            public IEnumerable<State> States
+            {
+                get { return states; }
+            }
+
+            public bool HasChildren
+            {
+                get { return labels.Length > 0; }
+            }
+
+            public bool IsFinal
+            {
+                get { return isFinal; }
+                set { isFinal = value; }
+            }
+
+            public State LastChild
+            {
+                get
             {
                 Debug.Assert(HasChildren, "No outgoing transitions.");
                 return states[states.Length - 1];
             }
-        }
+            }
 
-        public override bool Equals(object obj)
+            public override bool Equals(object obj)
         {
             var other = obj as State;
             if (other == null)
@@ -214,7 +214,7 @@ public  class StringUnionOperations
                    && Equals(labels, other.labels);
         }
 
-        public override int GetHashCode()
+            public override int GetHashCode()
         {
             int hash = isFinal ? 1 : 0;
             hash ^= (hash * 31) + labels.Length;
@@ -227,7 +227,7 @@ public  class StringUnionOperations
             return states.Aggregate(hash, (current, s) => current ^ RuntimeHelpers.GetHashCode(s));
         }
 
-        public State NewState(char label)
+            public State NewState(char label)
         {
             Debug.Assert(
                 Array.BinarySearch(labels, label) < 0,
@@ -240,7 +240,7 @@ public  class StringUnionOperations
             return states[states.Length - 1] = new State();
         }
 
-        public State GetLastChild(char label)
+            public State GetLastChild(char label)
         {
             int index = labels.Length - 1;
             State s = null;
@@ -253,27 +253,27 @@ public  class StringUnionOperations
             return s;
         }
 
-        public void ReplaceLastChild(State state)
+            public void ReplaceLastChild(State state)
         {
             Debug.Assert(HasChildren, "No outgoing transitions.");
             states[states.Length - 1] = state;
         }
 
-        private static char[] CopyOf(char[] original, int newLength)
+            private static char[] CopyOf(char[] original, int newLength)
         {
             var copy = new char[newLength];
             Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength));
             return copy;
         }
 
-        private static State[] CopyOf(State[] original, int newLength)
+            private static State[] CopyOf(State[] original, int newLength)
         {
             var copy = new State[newLength];
             Array.Copy(original, 0, copy, 0, Math.Min(original.Length, newLength));
             return copy;
         }
 
-        private static bool ReferenceEquals(Object[] a1, Object[] a2)
+            private static bool ReferenceEquals(Object[] a1, Object[] a2)
         {
             if (a1.Length != a2.Length)
             {
@@ -283,10 +283,11 @@ public  class StringUnionOperations
             return !a1.Where((t, i) => t != a2[i]).Any();
         }
 
-        private State GetState(char label)
+            private State GetState(char label)
         {
             int index = Array.BinarySearch(labels, label);
             return index >= 0 ? states[index] : null;
+        }
         }
     }
 }

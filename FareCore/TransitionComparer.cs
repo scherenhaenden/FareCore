@@ -1,25 +1,25 @@
-﻿namespace RandomDataGeneratorCore.FareRegex;
-
-public class TransitionComparer : IComparer<Transition>
+﻿namespace FareCore
 {
-    private readonly bool toFirst;
+    public class TransitionComparer : IComparer<Transition>
+    {
+        private readonly bool toFirst;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="TransitionComparer"/> class.
-    /// </summary>
-    /// <param name="toFirst">if set to <c>true</c> [to first].</param>
-    public TransitionComparer(bool toFirst)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransitionComparer"/> class.
+        /// </summary>
+        /// <param name="toFirst">if set to <c>true</c> [to first].</param>
+        public TransitionComparer(bool toFirst)
     {
         this.toFirst = toFirst;
     }
 
-    /// <summary>
-    /// Compares by (min, reverse max, to) or (to, min, reverse max).
-    /// </summary>
-    /// <param name="t1">The first Transition.</param>
-    /// <param name="t2">The second Transition.</param>
-    /// <returns></returns>
-    public int Compare(Transition t1, Transition t2)
+        /// <summary>
+        /// Compares by (min, reverse max, to) or (to, min, reverse max).
+        /// </summary>
+        /// <param name="t1">The first Transition.</param>
+        /// <param name="t2">The second Transition.</param>
+        /// <returns></returns>
+        public int Compare(Transition t1, Transition t2)
     {
         if (toFirst)
         {
@@ -94,5 +94,6 @@ public class TransitionComparer : IComparer<Transition>
         }
 
         return 0;
+    }
     }
 }

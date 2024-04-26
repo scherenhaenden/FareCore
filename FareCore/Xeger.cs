@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace RandomDataGeneratorCore.FareRegex;
-
-/// <summary>
+namespace FareCore
+{
+    /// <summary>
     /// An object that will generate text from a regular expression. In a way, 
     /// it's the opposite of a regular expression matcher: an instance of this class
     /// will produce text that is guaranteed to match the regular expression passed in.
@@ -121,3 +121,4 @@ namespace RandomDataGeneratorCore.FareRegex;
             return regExp;
         }
     }
+}
