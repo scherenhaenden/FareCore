@@ -6,6 +6,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <FileVersion>1.0.0</FileVersion>
+        <PackageVersion>1.0.0</PackageVersion>
         <Title>FareCore</Title>
         <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <Copyright>MIT</Copyright>
