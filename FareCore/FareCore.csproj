@@ -8,6 +8,10 @@
         <FileVersion>1.0.0</FileVersion>
         <Title>FareCore</Title>
         <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <Copyright>MIT</Copyright>
+        <PackageProjectUrl>https://github.com/scherenhaenden/FareCore</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/scherenhaenden/FareCore</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/scherenhaenden/FareCore</RepositoryUrl>
     </PropertyGroup>
 
 </Project>
