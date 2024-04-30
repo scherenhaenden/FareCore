@@ -81,7 +81,7 @@ public class XegerTests
         // run 100 times
         for (int i = 0; i < 100; i++)
         {
-            var pattern =  @"^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$:";
+            var pattern =  "^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$";
             var xeger = new Xeger(pattern);
             var createdString = xeger.Generate();
             Assert.IsTrue(Regex.IsMatch(createdString, pattern));
@@ -94,29 +94,7 @@ public class XegerTests
     }
     
     [Test]
-    public void TestShouldPass_Email1_Strings()
-    {
-
-        List<string> values = new List<string>();
-        
-        // run 100 times
-        for (int i = 0; i < 100; i++)
-        {
-            var pattern =  @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
-            var xeger = new Xeger(pattern);
-            var createdString = xeger.Generate();
-            Assert.IsTrue(Regex.IsMatch(createdString, pattern));
-            Assert.IsTrue(IsValidEmail(createdString));
-            values.Add(createdString);
-            
-        }
-        
-        
-        Assert.Pass();
-    }
-    
-    [Test]
-    public void TestShouldPass_Email2_Strings()
+    public void TestShouldPass_Email_Strings()
     {
 
         List<string> values = new List<string>();

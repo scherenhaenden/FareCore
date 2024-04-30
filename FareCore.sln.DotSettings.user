@@ -6,8 +6,5 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a7fb3273_002D2fca_002D4960_002Db867_002D00b1a6a6d4c3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestShouldPass_Email2_Strings" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::96423074-F9D6-4571-B117-5FF3CA760DE0::net6.0::FareCore.Tests.XegerTests.TestShouldPass_Email2_Strings&lt;/TestId&gt;
-    &lt;TestId&gt;NUnit3x::96423074-F9D6-4571-B117-5FF3CA760DE0::net6.0::FareCore.Tests.XegerTests.TestShouldPass_Email1_Strings&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/edwardflores/Projects/Development/FareCore/FareCore.Tests" Presentation="&amp;lt;FareCore.Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
