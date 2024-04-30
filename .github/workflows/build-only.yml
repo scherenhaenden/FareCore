@@ -34,5 +34,5 @@ jobs:
         run: dotnet restore
       - name: Build
         # build dotnet with output ./build.zip
-        run: dotnet build --configuration Release --no-restore --output ./
+        run: dotnet build --configuration Release --no-restore #--output ./build.zip
    
