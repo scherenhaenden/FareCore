@@ -3,7 +3,7 @@ name: CI - Build
 on:
   push:
     branches:
-      - 'test'         # matches every branch that doesn't contain a '/'      
+      - 'build-only'         # matches every branch that doesn't contain a '/'      
 jobs:
   # This workflow contains a single job called "build"
   build:
